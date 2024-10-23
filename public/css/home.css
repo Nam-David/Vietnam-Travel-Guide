@@ -207,8 +207,11 @@ a {
     width: 500px;
 }
 
-.card-content {
-    padding: 20px;
+.location_time {
+    display: flex;
+    justify-content: space-between;
+    width: 535px;
+    padding-left: 40px;
 }
 
 .card-content p {

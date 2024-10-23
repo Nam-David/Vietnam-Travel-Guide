@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    /* padding: 0; */
+    /* box-sizing: border-box; */
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    width: 100%;
+    /* Chiều rộng 100% */
+    border: none;
+    /* Không có viền */
+    height: 730px;
+    /* Chiều cao tự động */
+}
+
+.content {
+    font-size: 20px;
+    margin-left: 150px;
+    margin-right: 150px;
+    line-height: 2.0;
+}
+
+.footer {
+    width: 100%;
+    /* Chiều rộng 100% */
+    border: none;
+    /* Không có viền */
+    height: 260px;
+    /* Chiều cao tự động */
+    overflow: hidden;
+}
+
+.neo ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 50px;
+}
+
+.neo ul li a {
+    padding: 10px 30px;
+    background-color: rgb(0, 136, 255);
+    color: white;
+    text-decoration: none;
+    margin-right: 50px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.neo ul li a:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+h1 {
+    text-align: center;
+}
+
+.section-common {
+    padding: 40px;
+    position: relative;
+}
+
+.section-common .btn-page {
+    position: absolute;
+    right: 0;
+    transform: translateY(-100%);
+    margin-right: 98px;
+    padding: 10px 25px;
+    color: #35679c;
+    border: 2px solid #35679c;
+    border-radius: 50px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.section-common .btn-page:hover {
+    background-color: #35679c;
+    color: white;
+}
+
+.section-common h2 {
+    font-size: 30px;
+    padding-top: 35px;
+    margin: 0px 0px 5px 50px;
+}
+
+.section-common>p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0px 0px 50px;
+}
+
+.grid-common {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 50px 80px 0px;
+}
+
+.card-common {
+    text-align: center;
+}
+
+.card-common img {
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-common h4 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.card-common p {
+    margin-top: 10px;
+    color: #666;
+}
+
+
+.section-common.blog img {
+    width: 500px;
+}
+
+.location_time {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    
+}
+
+.card-content p {
+    color: #999;
+    font-size: 14px;
+}
+
+footer {
+    display: block;
+    background: hsl(223, 80%, 52%);
+    padding-bottom: 20px;
+}
+
+.footer_name {
+    text-align: center;
+    font-family: helvetica;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.footer_logo {
+    text-align: center;
+    padding: 20px 0px 10px;
+}
+
+.footer_logo_img {
+    width: 100px;
+}
+
+.copyright_text {
+    text-align: center;
+    font-family: helvetica;
+    color: white;
+}
+
+.nav_footer_menu ul {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+}
+
+.nav_footer_menu ul li {
+    padding: 10px 30px 30px;
+}
+
+.nav_footer_menu ul li a {
+    text-decoration: none;
+    font-size: 17px;
+    font-family: helvetica;
+    color: #ffffff;
+}
+
+.nav_footer_menu ul li a:hover {
+    color: burlywood;
+}
