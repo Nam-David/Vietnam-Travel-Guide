@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write New Review</title>
+    <link rel="stylesheet" href="WriteReview.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Vuon Tam The Gioi">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Destination</a></li>
+                <li><a href="#">Stories</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </nav>
+        <div class="auth">
+            <a href="#" class="sign-up">Sign Up</a>
+            <a href="#" class="login-btn">Login</a>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main-section">
+        <h1>Share your Travel Experience in form of a story</h1>
+        <div class="review-form">
+            <input type="text" placeholder="What would you like to review?" class="search-bar">
+            
+            <div class="flex-container">
+                <div class="top-places">
+                    <h2>Top places with reviews</h2>
+                    <p>Travelers want to see more reviews of these places.</p>
+                    
+                    <div class="review-placeholder">
+                        <img src="placeholder-image.png" alt="Upload your photo">
+                    </div>
+                </div>
+
+                <form>
+                    <label for="title">Title of your review</label>
+                    <input type="text" id="title" name="title" placeholder="Summarize your Travel Journey">
+                    
+                    <label for="review">Your review</label>
+                    <textarea id="review" name="review" placeholder="A detailed review of your Travel Journey. Travelers will love to know your experience"></textarea>
+
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter Travel Location">
+                    
+                    <label for="travel-date">When did you travel?</label>
+                    <select id="travel-date" name="travel-date">
+                        <option>Select One</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <!-- Add other months here -->
+                    </select>
+                    
+                   
+
+                    <button type="submit" class="submit-btn">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Travel Pulse. All rights reserved</p>
+    </footer>
+</body>
+</html>
