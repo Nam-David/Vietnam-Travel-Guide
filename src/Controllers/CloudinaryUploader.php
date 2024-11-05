@@ -2,9 +2,9 @@
 
 class CloudinaryUploader
 {
-    private $cloudName = 'your_cloud_name';  // Thay 'your_cloud_name' bằng tên cloud của bạn
-    private $apiKey = 'your_api_key';        // Thay 'your_api_key' bằng API key của bạn
-    private $apiSecret = 'your_api_secret';  // Thay 'your_api_secret' bằng API secret của bạn
+    private $cloudName = 'your_cloud_name';
+    private $apiKey = 'your_api_key';
+    private $apiSecret = 'your_api_secret';
 
     /**
      * Upload file to Cloudinary

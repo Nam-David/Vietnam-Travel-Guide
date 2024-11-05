@@ -162,6 +162,50 @@ class AdminController{
         $this->conn->query($sql);
         echo "Cập nhật tỉnh thành công!";
     }
+
+    public function getAllUsers(){
+        $data = [];
+
+        $sql = "SELECT * FROM users";
+        $result = $this->conn->query($sql);
+
+        if($result){
+            while($user = $result->fetch_assoc()){
+                $data[] = $user;
+            }
+        }
+
+        return $data;
+    }
+
+    public function getAllBlogs() {
+        $data = [];
     
+        $sql = "SELECT * FROM blogs";
+        $result = $this->conn->query($sql);
+    
+        if ($result) {
+            while ($blog = $result->fetch_assoc()) {
+                $data[] = $blog;
+            }
+        }
+    
+        return $data;
+    }
+
+    public function getAllProvinces() {
+        $data = [];
+    
+        $sql = "SELECT * FROM provinces";
+        $result = $this->conn->query($sql);
+    
+        if ($result) {
+            while ($province = $result->fetch_assoc()) {
+                $data[] = $province;
+            }
+        }
+    
+        return $data;
+    }    
 }
 ?>
