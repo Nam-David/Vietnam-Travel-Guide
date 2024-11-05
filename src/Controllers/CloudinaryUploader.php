@@ -18,7 +18,7 @@ class CloudinaryUploader
 
         
         $timestamp = time();
-        $signature = sha1("timestamp={$timestamp}{$this->apiSecret}");
+        $signature = sha1(string: "timestamp={$timestamp}{$this->apiSecret}");
 
         // File data for upload
         $fileData = curl_file_create($fileTmpPath, mime_content_type($fileTmpPath), basename($fileTmpPath));

@@ -15,7 +15,7 @@ class AuthController{
     public function checkAuth()
     {
         if(!isset($_SESSION['blogger_id'])){
-            header("location: login.php");
+            header(header: "location: login.php");
         }
         exit;
     }

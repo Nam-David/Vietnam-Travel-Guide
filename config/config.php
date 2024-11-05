@@ -7,7 +7,8 @@ class Config{
         $password = "";
         $dbname = "VIETNAMTRAVEL";
 
-        $conn = mysqli_connect($hostname, $username, $password, $dbname) or die ("Lỗi kết nối Database")
+        $conn = mysqli_connect($hostname, $username, $password, $dbname) or die ("Lỗi kết nối Database");
         return $conn;
     }
 }
+
