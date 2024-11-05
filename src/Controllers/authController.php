@@ -12,13 +12,39 @@ class AuthController{
     }
 
     // hàm check người dùng có đăng nhập chưa
-    public function checkAuth()
+    public function checkAdmin()
     {
-        if(!isset($_SESSION['blogger_id'])){
+        // Kiểm tra người dùng đã đăng nhập hay chưa
+        if (!isset($_SESSION['blogger_id'])) {
             header("location: login.php");
+            exit;
         }
-        exit;
+    
+        // Kiểm tra vai trò của người dùng có phải là "admin" hay không
+        if ($_SESSION['role'] !== 'admin') {
+            echo "Bạn không có quyền truy cập vào trang này!";
+            header("location: forbidden.php");
+            exit;
+        }
     }
+
+    
+    public function checkBlogger()
+    {
+        // Kiểm tra người dùng đã đăng nhập hay chưa
+        if (!isset($_SESSION['blogger_id'])) {
+            header("location: login.php");
+            exit;
+        }
+
+        // Kiểm tra vai trò của người dùng có phải là "blogger" hay không
+        if ($_SESSION['role'] !== 'blogger') {
+            echo "Bạn không có quyền truy cập vào trang này!";
+            header("location: forbidden.php"); // hoặc trang báo lỗi
+            exit;
+        }
+    }
+
 
     // check Email tồn tại chưa
     private function checkIssetEmail($email)
