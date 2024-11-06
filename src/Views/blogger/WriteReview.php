@@ -8,8 +8,8 @@
 </head>
 <body>
     <?php   
-        include_once "../Controllers/bothController.php";
-        include_once "../Controllers/authController.php";
+        include_once "../../Controllers/bothController.php";
+        include_once "../../Controllers/authController.php";
 
         $controller = new bothController();
         $provinces = $controller->getAllProvinces();
