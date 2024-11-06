@@ -1,7 +1,7 @@
 <?php
 
 include_once "CloudinaryUploader.php";
-
+include_once __DIR__ . "/../config/config.php";
 class AdminController{
     
     private Config $conn;

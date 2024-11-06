@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . "/../config/config.php";
 class bothController{
 
     private Config $conn;
@@ -55,48 +56,27 @@ class bothController{
     }
 
     public function getProvincesByRegion($provinceRegion) {
-        $data = [];
-    
+
         $sql = "SELECT * FROM provinces WHERE provinceRegion = '$provinceRegion'";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($province = $result->fetch_assoc()) {
-                $data[] = $province;
-            }
-        }
-        
-        return $data;
+        return $get_query;
     }
 
     public function getAllProvinces() {
-        $data = [];
     
-        $sql = "SELECT * FROM provinces";
-        $result = $this->conn->query($sql);
+        $sql = "SELECT * FROM province";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($province = $result->fetch_assoc()) {
-                $data[] = $province;
-            }
-        }
-    
-        return $data;
+        return $get_query;
     }
 
     public function getAllDestinationByProvinceID($provinceID) {
-        $data = [];
-    
+        
         $sql = "SELECT * FROM destination WHERE provinceID = $provinceID";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($destination = $result->fetch_assoc()) {
-                $data[] = $destination;
-            }
-        }
-    
-        return $data;
+        return $get_query;
     }
 }
 ?>

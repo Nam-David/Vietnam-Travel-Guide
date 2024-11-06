@@ -1,6 +1,7 @@
 <?php
 
 include_once "CloudinaryUploader.php";
+include_once __DIR__ . "/../config/config.php";
 
 class bloggerController{
     private Config $conn;

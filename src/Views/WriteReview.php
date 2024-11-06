@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Write New Review</title>
-    <link rel="stylesheet" href="/public/css/WriteReview.css">
+    <link rel="stylesheet" href="/BE_LT_WEB/Vietnam-Travel-Guide/public/css/WriteReview.css">
 </head>
 <body>
+    <?php   
+        include_once "../Controllers/bothController.php";
+        include_once "../Controllers/authController.php";
+
+        $controller = new bothController();
+        $provinces = $controller->getAllProvinces();
+        
+        $auth = new AuthController();
+        $auth->checkAuth();
+    ?>
     <!-- Header -->
     <header>
         <div class="logo">
@@ -41,27 +51,24 @@
                     </div>
                 </div>
 
-                <form>
-                    <label for="title">Title of your review</label>
-                    <input type="text" id="title" name="title" placeholder="Summarize your Travel Journey">
-                    
-                    <label for="review">Your review</label>
-                    <textarea id="review" name="review" placeholder="A detailed review of your Travel Journey. Travelers will love to know your experience"></textarea>
-
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" placeholder="Enter Travel Location">
-                    
-                    <label for="travel-date">When did you travel?</label>
-                    <select id="travel-date" name="travel-date">
-                        <option>Select One</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <!-- Add other months here -->
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label for="provinceID">Chọn Tỉnh/Thành Phố:</label>
+                    <select id="provinceID" name="provinceID" required>
+                        <option value="">Chọn tỉnh/thành</option>
+                        <?php
+                            foreach ($provinces as $province) {
+                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
                     </select>
-                    
-                   
-
-                    <button type="submit" class="submit-btn">Submit Review</button>
+    
+                    <label for="blogContent">Nội Dung Blog:</label>
+                    <textarea id="blogContent" name="blogContent" placeholder="Nhập nội dung blog của bạn" required></textarea>
+    
+                    <label for="blogImages">Tải lên Hình Ảnh:</label>
+                    <input type="file" id="blogImages" name="blogImages[]" multiple required accept="image/*">
+    
+                    <button type="submit" class="submit-btn">Thêm Blog</button>
                 </form>
             </div>
         </div>
