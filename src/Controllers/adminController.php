@@ -3,6 +3,7 @@
 include_once "CloudinaryUploader.php";
 
 class AdminController{
+    
     private Config $conn;
 
     // hàm tạo
@@ -22,14 +23,14 @@ class AdminController{
     private function savePost($provinceID, $postCreateDate, $imageUrl) {
         $sql = "INSERT INTO posts (provinceID, postCreateDate, imageUrl) 
                 VALUES ('$provinceID', '$postCreateDate', '$imageUrl')";
-        $this->conn->query($sql);
-        return $this->conn->insert_id;
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        return $insert_query['userID'];
     }
 
     private function addPostDetail($postId, $sectionTitle, $sectionContent, $category, $imageDetailUrl) {
-        $sql = "INSERT INTO post_details (postID, sectionTitle, sectionContent, category, imgURL) 
+        $sql = "INSERT INTO postdetails (postID, sectionTitle, sectionContent, category, imgURL) 
                 VALUES ($postId, '$sectionTitle', '$sectionContent', '$category', '$imageDetailUrl')";
-        $this->conn->query($sql);
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     // các hàm post của admin
@@ -65,57 +66,14 @@ class AdminController{
         }
     }
 
-    public function getPostbyProvinceID($provinceId) {
-        $data = [];
-    
-        // tìm post theo province
-        $sql = "SELECT * FROM post WHERE provinceID = $provinceId LIMIT 1"; // Giới hạn 1 bài viết
-        $postResult = $this->conn->query($sql);
-        
-        if (!$postResult || $postResult->num_rows === 0) {
-            return null; 
-        }
-    
-        $post = $postResult->fetch_assoc(); // Lấy bài viết đầu tiên
-    
-        // tìm postdetail bằng postID
-        $sqlDetail = "SELECT * FROM postDetail WHERE postID = " . $post['postID'];
-        $detailsResult = $this->conn->query($sqlDetail);
-        $details = [];
-    
-        // Lưu trữ thông tin chi tiết của post vào mảng
-        while ($detail = $detailsResult->fetch_assoc()) {
-            $details[] = $detail;
-        }
-    
-        // tìm destination theo province
-        $sqlDestination = "SELECT * FROM destination WHERE provinceID = " . $post['provinceID'];
-        $destinationResult = $this->conn->query($sqlDestination);
-        $destinations = [];
-    
-        // Lưu trữ thông tin destination vào mảng
-        while ($destination = $destinationResult->fetch_assoc()) {
-            $destinations[] = $destination;
-        }
-    
-        // Thêm post, details và destinations vào mảng data
-        $data = [
-            'post' => $post,
-            'details' => $details,
-            'destinations' => $destinations,
-        ];
-    
-        return $data;
-    }
-
     public function deletePost($postId) {
         // Xóa các chi tiết của bài viết trước
         $sqlDetailDelete = "DELETE FROM post_details WHERE postID = $postId";
-        $this->conn->query($sqlDetailDelete);
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
     
         // Xóa bài viết
         $sqlPostDelete = "DELETE FROM posts WHERE postID = $postId";
-        $this->conn->query($sqlPostDelete);
+        $delete_post_query = mysqli_query($this->conn->connect(),$sql);
     
         if ($this->conn->affected_rows > 0) {
             echo "Bài viết đã được xóa thành công!";
@@ -125,7 +83,7 @@ class AdminController{
     }
 
     //các hàm province của admin
-    public function adddProvince(){
+    public function addProvince(){
 
         $ProvinceName = $_POST['provinceName'];
         $provinceRegion = $_POST['provinceRegion'];
@@ -133,22 +91,7 @@ class AdminController{
         $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
                 VALUES ('$provinceName', '$provinceRegion')";
 
-        $this->conn->query($sql);
-    }
-
-    public function getProvincesByRegion($provinceRegion) {
-        $data = [];
-    
-        $sql = "SELECT * FROM provinces WHERE provinceRegion = '$provinceRegion'";
-        $result = $this->conn->query($sql);
-    
-        if ($result) {
-            while ($province = $result->fetch_assoc()) {
-                $data[] = $province;
-            }
-        }
-        
-        return $data;
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function updateProvince($provinceID) {
@@ -159,7 +102,7 @@ class AdminController{
                 SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
                 WHERE provinceID = $provinceID";
     
-        $this->conn->query($sql);
+        $update_query = mysqli_query($this->conn->connect(),$sql);
         echo "Cập nhật tỉnh thành công!";
     }
 
@@ -167,10 +110,10 @@ class AdminController{
         $data = [];
 
         $sql = "SELECT * FROM users";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
 
-        if($result){
-            while($user = $result->fetch_assoc()){
+        if($get_query ){
+            while($user = $get_query ->fetch_assoc()){
                 $data[] = $user;
             }
         }
@@ -182,10 +125,10 @@ class AdminController{
         $data = [];
     
         $sql = "SELECT * FROM blogs";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($blog = $result->fetch_assoc()) {
+        if ($get_query ) {
+            while ($blog = $get_query ->fetch_assoc()) {
                 $data[] = $blog;
             }
         }
@@ -193,19 +136,19 @@ class AdminController{
         return $data;
     }
 
-    public function getAllProvinces() {
+    public function getAllPost() {
         $data = [];
     
-        $sql = "SELECT * FROM provinces";
-        $result = $this->conn->query($sql);
+        $sql = "SELECT * FROM posts";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($province = $result->fetch_assoc()) {
-                $data[] = $province;
+        if ($get_query ) {
+            while ($post = $get_query ->fetch_assoc()) {
+                $data[] = $post;
             }
         }
     
         return $data;
-    }    
+    }
 }
 ?>
