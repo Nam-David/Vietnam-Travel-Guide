@@ -1,4 +1,6 @@
 <?php
+include_once __DIR__ . "/../config/config.php";
+
 class AuthController{
     private Config $conn;
 
@@ -88,20 +90,13 @@ class AuthController{
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Sử dụng Prepared Statements (an toàn)
-        $sql = "INSERT INTO users (userName, email, pass_word, role) VALUES (?, ?, ?, ?)";
-        $stmt = $this->conn->connect()->prepare($sql);
-        $stmt->bind_param("ssss", $username, $email, $hashedPassword, "blogger");
+        $sql = "INSERT INTO users (userName, email, pass_word, role_) 
+        VALUES ('$username','$email', '$hashedPassword', 'blogger')";
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
 
-        if ($stmt->execute()) {
-            echo "Đăng ký thành công!";
-            $_SESSION['blogger_id'] = $this->conn->connect()->insert_id;
-            $_SESSION['role'] = "blogger";
-            header("location: welcome.php");
-        } else {
-            echo "Đăng ký thất bại. Vui lòng thử lại!";
+        if($insert_query){
+            header("location: /BE_LT_WEB/Vietnam-Travel-Guide/src/Views/home.html");
         }
-
-        $stmt->close();
     }
 
     public function login()
@@ -119,31 +114,34 @@ class AuthController{
             return;
         }
 
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $this->conn->connect()->prepare($sql);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
-        if ($result->num_rows === 0) {
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+
+        if (mysqli_num_rows($get_query) === 0) {
             echo "Email hoặc mật khẩu không đúng!";
             return;
         }
-
-        $user = mysqli_fetch_array($result);
+    
+        // Lấy thông tin người dùng từ cơ sở dữ liệu
+        $user = mysqli_fetch_array($get_query);
         
-        // Kiểm tra mật khẩu
+        // Kiểm tra mật khẩu người dùng nhập vào với mật khẩu đã mã hóa trong cơ sở dữ liệu
         if (password_verify($password, $user['pass_word'])) {
-            $_SESSION['blogger_id'] = $user['id'];
-            $_SESSION['role'] = $user['role'];
-            echo "Đăng nhập thành công!";
-            header("location: welcome.php");
+            $_SESSION['blogger_id'] = $user['userID'];
+            $_SESSION['role'] = $user['role_'];
+
+            // if (isset($_SESSION['blogger_id'])) {
+            //     echo "Chào mừng, blogger với ID: " . $_SESSION['blogger_id'];
+            // } else {
+            //     echo "Session chưa được tạo hoặc người dùng chưa đăng nhập.";
+            // }
+            
+            header("location: /BE_LT_WEB/Vietnam-Travel-Guide/src/Views/home.html");
             exit;
         } else {
             echo "Email hoặc mật khẩu không đúng!";
         }
-
-        $stmt->close();
     }
 
     public function logout()

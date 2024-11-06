@@ -23,14 +23,14 @@ class AdminController{
     private function savePost($provinceID, $postCreateDate, $imageUrl) {
         $sql = "INSERT INTO posts (provinceID, postCreateDate, imageUrl) 
                 VALUES ('$provinceID', '$postCreateDate', '$imageUrl')";
-        $this->conn->query($sql);
-        return $this->conn->insert_id;
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        return $insert_query['userID'];
     }
 
     private function addPostDetail($postId, $sectionTitle, $sectionContent, $category, $imageDetailUrl) {
         $sql = "INSERT INTO postdetails (postID, sectionTitle, sectionContent, category, imgURL) 
                 VALUES ($postId, '$sectionTitle', '$sectionContent', '$category', '$imageDetailUrl')";
-        $this->conn->query($sql);
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     // các hàm post của admin
@@ -69,11 +69,11 @@ class AdminController{
     public function deletePost($postId) {
         // Xóa các chi tiết của bài viết trước
         $sqlDetailDelete = "DELETE FROM post_details WHERE postID = $postId";
-        $this->conn->query($sqlDetailDelete);
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
     
         // Xóa bài viết
         $sqlPostDelete = "DELETE FROM posts WHERE postID = $postId";
-        $this->conn->query($sqlPostDelete);
+        $delete_post_query = mysqli_query($this->conn->connect(),$sql);
     
         if ($this->conn->affected_rows > 0) {
             echo "Bài viết đã được xóa thành công!";
@@ -91,7 +91,7 @@ class AdminController{
         $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
                 VALUES ('$provinceName', '$provinceRegion')";
 
-        $this->conn->query($sql);
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function updateProvince($provinceID) {
@@ -102,7 +102,7 @@ class AdminController{
                 SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
                 WHERE provinceID = $provinceID";
     
-        $this->conn->query($sql);
+        $update_query = mysqli_query($this->conn->connect(),$sql);
         echo "Cập nhật tỉnh thành công!";
     }
 
@@ -110,10 +110,10 @@ class AdminController{
         $data = [];
 
         $sql = "SELECT * FROM users";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
 
-        if($result){
-            while($user = $result->fetch_assoc()){
+        if($get_query ){
+            while($user = $get_query ->fetch_assoc()){
                 $data[] = $user;
             }
         }
@@ -125,10 +125,10 @@ class AdminController{
         $data = [];
     
         $sql = "SELECT * FROM blogs";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($blog = $result->fetch_assoc()) {
+        if ($get_query ) {
+            while ($blog = $get_query ->fetch_assoc()) {
                 $data[] = $blog;
             }
         }
@@ -140,10 +140,10 @@ class AdminController{
         $data = [];
     
         $sql = "SELECT * FROM posts";
-        $result = $this->conn->query($sql);
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($result) {
-            while ($post = $result->fetch_assoc()) {
+        if ($get_query ) {
+            while ($post = $get_query ->fetch_assoc()) {
                 $data[] = $post;
             }
         }

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/BE_LT_WEB/Vietnam-Travel-Guide/public/css/login.css">
 </head>
 <body>
 
     <div id="main">
 
         <div id="img">
-            <img src="/image/test1.jpg" alt="Không Hiển Thị" id="left-img">
+            <img src="/BE_LT_WEB/Vietnam-Travel-Guide/public/image/test1.jpg" alt="Không Hiển Thị" id="left-img">
         </div>
     
         <div id="login-container">
@@ -25,20 +25,20 @@
 
             <div class="divider">or</div>
 
-            <form class="login-form">
+            <form class="login-form" method="POST" action="/BE_LT_WEB/Vietnam-Travel-Guide/src/FunctionOfActor/both/login.php">
                 <div class="form-group">
-                    <input type="email" id="email" placeholder="Email Address" class="input" required>
+                    <input type="email" id="email" name="email"  placeholder="Email Address" class="input" required>
                 </div>
                 
                 <div class="form-group">
-                    <input type="password" id="password" placeholder="Password" class="input" required>
+                    <input type="password" id="password" name="password" placeholder="Password" class="input" required>
                 </div>
 
                 <div class="form-options">
                     <div>
                         <input type="checkbox"> Remember me
                     </div>
-                    <a href="/html/forgotPassword.html">Forgot Password?</a>
+                    <a href="/BE_LT_WEB/Vietnam-Travel-Guide/src/Views/forgotPassword.html">Forgot Password?</a>
                 </div>
 
                 <div class="form-group">
@@ -46,7 +46,7 @@
                 </div>
                 
                 <div class="create-account">
-                    <p id="register">Don't have an account yet? <a href="/html/createAccount.html">Create account</a></p>
+                    <p id="register">Don't have an account yet? <a href="/BE_LT_WEB/Vietnam-Travel-Guide/src/Views/createAccount.html">Create account</a></p>
                 </div>
             </form>
         </div>

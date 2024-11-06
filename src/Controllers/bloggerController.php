@@ -22,13 +22,13 @@ class bloggerController{
     public function saveBlog($provinceID, $userID, $blogContent, $blogCreateDate){
         $sql = "INSERT INTO blogs(provinceID, userID, blogContent, blogCreateDate) 
                 VALUES ($provinceID, '$userID', '$blogContent', '$blogCreateDate')";
-        $this->conn->query($sql);
-        return $this->conn->insert_id;
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        return $insert_query['blogID'];
     }
 
     private function saveBlogImage($blogId, $imgBlogURL) {
         $sql = "INSERT INTO blog_images (blogID, imgBlogURL) VALUES ($blogId, '$imgBlogURL')";
-        $this->conn->query($sql);
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     //các hàm của blogger
@@ -65,7 +65,7 @@ class bloggerController{
         $userID = $_SESSION['blogger_id'];
         $sql = "DELETE FROM blogID = $blogid and userID = $userID";
 
-        $this->conn->query($sql);
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
 
         if ($this->conn->affected_rows > 0) {
             echo "blog đã được xóa thành công!";
@@ -85,11 +85,7 @@ class bloggerController{
                     blogContent = '$blogContent', 
                 WHERE blogID = $blogId and userID = $userID";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Blog đã được cập nhật thành công.";
-        } else {
-            echo "Lỗi cập nhật blog: " . $this->conn->error;
-        }
+        $update_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function addComment($blogID)
@@ -101,11 +97,7 @@ class bloggerController{
         $sql = "INSERT INTO userComment (blogID, userID, cmtContent, createDate) 
                 VALUES ($blogID, $userID, '$cmtContent', '$createDate')";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment added successfully.";
-        } else {
-            echo "Error adding comment: " . $this->conn->error;
-        }
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function updateComment($commentID)
@@ -116,11 +108,7 @@ class bloggerController{
                 SET cmtContent = '$cmtContent' 
                 WHERE commentID = $commentID AND userID = $userID";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment updated successfully.";
-        } else {
-            echo "Error updating comment: " . $this->conn->error;
-        }
+        $update_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function deleteComment($commentID)
@@ -129,11 +117,7 @@ class bloggerController{
         $sql = "DELETE FROM userComment 
                 WHERE commentID = $commentID AND userID = $userID";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment deleted successfully.";
-        } else {
-            echo "Error deleting comment: " . $this->conn->error;
-        }
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function addRepComment($commentID)
@@ -145,11 +129,7 @@ class bloggerController{
         $sql = "INSERT INTO repComment (userID,commentID, repContent, createDateRep) 
                 VALUES ($userID, $commentID, '$repContent', '$createDateRep')";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment added successfully.";
-        } else {
-            echo "Error adding comment: " . $this->conn->error;
-        }
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function updateRepComment($repCommentID)
@@ -161,12 +141,7 @@ class bloggerController{
         $sql = "UPDATE repComment 
                 SET repContent = '$repContent'
                 WHERE repCommentID = $repCommentID AND userID = $userID";
-
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment updated successfully.";
-        } else {
-            echo "Error updating comment: " . $this->conn->error;
-        }
+        $update_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     public function deleteRepComment($repCommentID)
@@ -175,11 +150,7 @@ class bloggerController{
         $sql = "DELETE FROM repComment 
                 WHERE repCommentID = $repCommentID AND userID = $userID";
 
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Comment deleted successfully.";
-        } else {
-            echo "Error deleting comment: " . $this->conn->error;
-        }
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
     }
 
 }
