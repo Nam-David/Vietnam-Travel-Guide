@@ -17,17 +17,17 @@ class bothController{
     
         // tìm post theo province
         $sql = "SELECT * FROM post WHERE provinceID = $provinceId LIMIT 1"; // Giới hạn 1 bài viết
-        $postResult = $this->conn->query($sql);
+        $postResult = mysqli_query($this->conn->connect(),$sql);
         
         if (!$postResult || $postResult->num_rows === 0) {
             return null; 
         }
     
-        $post = $postResult->fetch_assoc(); // Lấy bài viết đầu tiên
+        $post = $postResult->fetch_assoc();
     
         // tìm postdetail bằng postID
         $sqlDetail = "SELECT * FROM postDetail WHERE postID = " . $post['postID'];
-        $detailsResult = $this->conn->query($sqlDetail);
+        $detailsResult = mysqli_query($this->conn->connect(),$sqlDetail);
         $details = [];
     
         // Lưu trữ thông tin chi tiết của post vào mảng
@@ -37,7 +37,7 @@ class bothController{
     
         // tìm destination theo province
         $sqlDestination = "SELECT * FROM destination WHERE provinceID = " . $post['provinceID'];
-        $destinationResult = $this->conn->query($sqlDestination);
+        $destinationResult = mysqli_query($this->conn->connect(),$sqlDestination);
         $destinations = [];
     
         // Lưu trữ thông tin destination vào mảng

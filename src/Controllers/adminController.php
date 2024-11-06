@@ -69,13 +69,13 @@ class AdminController{
     public function deletePost($postId) {
         // Xóa các chi tiết của bài viết trước
         $sqlDetailDelete = "DELETE FROM post_details WHERE postID = $postId";
-        $delete_query = mysqli_query($this->conn->connect(),$sql);
+        $delete_query = mysqli_query($this->conn->connect(),$sqlDetailDelete);
     
         // Xóa bài viết
         $sqlPostDelete = "DELETE FROM posts WHERE postID = $postId";
-        $delete_post_query = mysqli_query($this->conn->connect(),$sql);
+        $delete_post_query = mysqli_query($this->conn->connect(),$sqlPostDelete);
     
-        if ($this->conn->affected_rows > 0) {
+        if ($this->conn->getAffectedRows() > 0) {
             echo "Bài viết đã được xóa thành công!";
         } else {
             echo "Không tìm thấy bài viết để xóa!";
@@ -85,7 +85,7 @@ class AdminController{
     //các hàm province của admin
     public function addProvince(){
 
-        $ProvinceName = $_POST['provinceName'];
+        $provinceName = $_POST['provinceName'];
         $provinceRegion = $_POST['provinceRegion'];
 
         $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
@@ -107,48 +107,27 @@ class AdminController{
     }
 
     public function getAllUsers(){
-        $data = [];
 
         $sql = "SELECT * FROM users";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
-        if($get_query ){
-            while($user = $get_query ->fetch_assoc()){
-                $data[] = $user;
-            }
-        }
-
-        return $data;
+        return $get_query;
     }
 
     public function getAllBlogs() {
-        $data = [];
-    
+        
         $sql = "SELECT * FROM blogs";
         $get_query = mysqli_query($this->conn->connect(),$sql);
-    
-        if ($get_query ) {
-            while ($blog = $get_query ->fetch_assoc()) {
-                $data[] = $blog;
-            }
-        }
-    
-        return $data;
+
+        return $get_query;
     }
 
     public function getAllPost() {
-        $data = [];
-    
+
         $sql = "SELECT * FROM posts";
         $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        if ($get_query ) {
-            while ($post = $get_query ->fetch_assoc()) {
-                $data[] = $post;
-            }
-        }
-    
-        return $data;
+        return $get_query;
     }
 }
 ?>

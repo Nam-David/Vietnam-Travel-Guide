@@ -141,7 +141,7 @@ class AuthController{
         }
 
         $user = mysqli_fetch_array($get_query);
-
+        
         // Kiểm tra mật khẩu nhập vào có khớp với mật khẩu đã mã hóa trong cơ sở dữ liệu không
         if (md5($password) === $user['pass_word']) {
             $_SESSION['blogger_id'] = $user['userID'];

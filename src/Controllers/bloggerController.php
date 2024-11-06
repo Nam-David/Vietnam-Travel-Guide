@@ -68,7 +68,7 @@ class bloggerController{
 
         $delete_query = mysqli_query($this->conn->connect(),$sql);
 
-        if ($this->conn->affected_rows > 0) {
+        if ($this->conn->getAffectedRows() > 0) {
             echo "blog đã được xóa thành công!";
         } else {
             echo "Không tìm thấy blog để xóa!";
@@ -119,6 +119,12 @@ class bloggerController{
                 WHERE commentID = $commentID AND userID = $userID";
 
         $delete_query = mysqli_query($this->conn->connect(),$sql);
+
+        if ($this->conn->getAffectedRows() > 0) {
+            echo "Comment đã được xóa thành công!";
+        } else {
+            echo "Không tìm thấy Comment để xóa!";
+        }
     }
 
     public function addRepComment($commentID)
@@ -152,6 +158,12 @@ class bloggerController{
                 WHERE repCommentID = $repCommentID AND userID = $userID";
 
         $delete_query = mysqli_query($this->conn->connect(),$sql);
+
+        if ($this->conn->getAffectedRows() > 0) {
+            echo "RepComment đã được xóa thành công!";
+        } else {
+            echo "Không tìm thấy RepComment để xóa!";
+        }
     }
 
 }
