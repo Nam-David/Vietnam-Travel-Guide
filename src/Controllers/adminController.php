@@ -69,13 +69,13 @@ class AdminController{
     public function deletePost($postId) {
         // Xóa các chi tiết của bài viết trước
         $sqlDetailDelete = "DELETE FROM post_details WHERE postID = $postId";
-        $delete_query = mysqli_query($this->conn->connect(),$sql);
+        $delete_query = mysqli_query($this->conn->connect(),$sqlDetailDelete);
     
         // Xóa bài viết
         $sqlPostDelete = "DELETE FROM posts WHERE postID = $postId";
-        $delete_post_query = mysqli_query($this->conn->connect(),$sql);
+        $delete_post_query = mysqli_query($this->conn->connect(),$sqlPostDelete);
     
-        if ($this->conn->affected_rows > 0) {
+        if ($this->conn->getAffectedRows() > 0) {
             echo "Bài viết đã được xóa thành công!";
         } else {
             echo "Không tìm thấy bài viết để xóa!";
@@ -89,7 +89,7 @@ class AdminController{
         $provinceRegion = $_POST['provinceRegion'];
 
         $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
-                VALUES ('$provinceName', '$provinceRegion')";
+                VALUES ('$ProvinceName', '$provinceRegion')";
 
         $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
