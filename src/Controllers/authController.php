@@ -101,10 +101,6 @@ class AuthController{
             return;
         }
 
-        // dùng Bcrypt
-        // Đổi mật khẩu trong cơ sở dữ liệu
-        // $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
         $hashedPassword = md5($password);
 
 
@@ -142,7 +138,6 @@ class AuthController{
 
         $user = mysqli_fetch_array($get_query);
         
-        // Kiểm tra mật khẩu nhập vào có khớp với mật khẩu đã mã hóa trong cơ sở dữ liệu không
         if (md5($password) === $user['pass_word']) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];

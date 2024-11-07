@@ -40,7 +40,7 @@ class bloggerController{
         $blogContent = $_POST['blogContent'];
         $blogCreateDate = date('Y-m-d H:i:s');
 
-        $blogid = saveBlog($provinceID, $userID, $blogContent, $blogCreateDate);
+        $blogid = $this->saveBlog($provinceID, $userID, $blogContent, $blogCreateDate);
         echo "Blog thêm thành công";
 
         // Xử lý hình ảnh
@@ -54,14 +54,14 @@ class bloggerController{
             $imageUrl = $this->uploadImage($fileTmpPath);
 
             if ($imageUrl !== false) {
-                $this->saveBlogImage($blogId, $imageUrl);
+                $this->saveBlogImage($blogid, $imageUrl);
             } else {
                 echo "Lỗi khi tải lên hình ảnh: " . $files['name'][$i];
             }
         }
     }
 
-    public function deleteBlog($blogId){
+    public function deleteBlog($blogid){
 
         $userID = $_SESSION['blogger_id'];
         $sql = "DELETE FROM blogID = $blogid and userID = $userID";

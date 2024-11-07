@@ -1,5 +1,5 @@
 <?php
-include_once "Controller/bothController.php";
+include_once "../../Controllers/authController.php";
 
 $controller = new bothController();
 $controller->getAllProvinces();
