@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../../public/css/createAccount.css">
-    <link rel="icon" type="image/png" href="../config/favicon.php">
-
 </head>
 <body>
 
@@ -24,13 +22,23 @@
 
         <form class="login-form" method="post" action="../FunctionOfActor/both/createAccount.php">
             <input type="text" id="name" name="username" placeholder="Full Name" required>
-            <input type="email" id="email" name="email" placeholder="Email Address" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+            <input type="email" id="email" name="email" placeholder="Email Address" required>        
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+                    👁️‍🗨️ 
+                </span>
+            </div>            
+            <div class="password-container">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+                    👁️‍🗨️
+                </span>
+            </div>
             <input type="submit" id="submit" value="Sign Up">
-            
+
             <div class="login-account">
-                Already have an account? <a href="./login.html">Sign in to account</a>
+                Already have an account? <a href="login.html">Sign in to account</a>
             </div>
         </form>
     </div>

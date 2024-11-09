@@ -94,3 +94,16 @@ h1, h4 {
         width: 100%; /* Đặt chiều rộng cho cả hai phần tử là 100% khi màn hình nhỏ hơn 1000px */
     }
 }
+
+
+.form-group {
+    position: relative;
+  }
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

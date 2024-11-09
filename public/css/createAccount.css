@@ -68,3 +68,15 @@ h1 {
 #left-img {
     width: 50%;
 }
+
+.password-container {
+    position: relative;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
