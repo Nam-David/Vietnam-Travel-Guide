@@ -8,22 +8,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="Vuon Tam The Gioi">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Destination</a></li>
-                <li><a href="#">Stories</a></li>
-                <li><a href="#">Reviews</a></li>
-            </ul>
-        </nav>
-        <div class="auth">
-            <a href="#" class="sign-up">Sign Up</a>
-            <a href="#" class="login-btn">Login</a>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <!-- Main Section -->
     <section class="main-section">
@@ -32,15 +17,20 @@
             <input type="text" placeholder="What would you like to review?" class="search-bar">
             
             <div class="flex-container">
+                <!-- Image Upload Section -->
                 <div class="top-places">
-                    <h2>Top places with reviews</h2>
-                    <p>Travelers want to see more reviews of these places.</p>
+                    <h2>Upload Photos for Review</h2>
+                    
+                    <p>Share the best moments from your travel journey.</p>
                     
                     <div class="review-placeholder">
-                        <img src="placeholder-image.png" alt="Upload your photo">
+                        <label for="upload-photos">Upload your photos</label>
+                        <input type="file" id="upload-photos" accept="image/*" multiple>
                     </div>
+                    <div id="photo-preview" class="photo-preview"></div>
                 </div>
 
+                <!-- Review Form -->
                 <form>
                     <label for="title">Title of your review</label>
                     <input type="text" id="title" name="title" placeholder="Summarize your Travel Journey">
@@ -56,20 +46,27 @@
                         <option>Select One</option>
                         <option>January</option>
                         <option>February</option>
-                        <!-- Add other months here -->
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
                     </select>
                     
-                   
-
                     <button type="submit" class="submit-btn">Submit Review</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Travel Pulse. All rights reserved</p>
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/public/js/WriteReview.js"></script>
 </body>
 </html>
