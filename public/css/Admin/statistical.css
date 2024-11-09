@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f7fb;
-    overflow-x: hidden;
+    background-color: rgb(246, 249, 255);
 }
 
 .filter-section {

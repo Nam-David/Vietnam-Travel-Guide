@@ -4,54 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="/static/css/Admin/admin.css">
-    <link rel="stylesheet" href="/static/css/sidebar.css">
-    <link rel="stylesheet" href="/static/css/navbar.css">
-    <script>
-        function alertFeature() {
-            alert('Tính năng đang được được phát triển');
-        }
-    </script>
+    <link rel="stylesheet" href="../../../public/css/Admin/admin.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/css/sidebar.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-
-<!--JS-->
-<script src="/static/js/sidebar.js"></script>
-<script src="/static/js/navbar.js"></script>
-<script src="/static/js/url.js"></script>
-<script src="/static/js/tokenAdmin.js"></script>
-<script src="/static/js/Admin/admin.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../../../public/js/Admin/admin.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
 
 <div class="container">
     <div class="sidebar1">
         <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="Avatar">
-        <div class="user-name" id="user-name"></div>
+        <div class="user-name" id="user-name">ABCDEF</div>
     </div>
 
     <div class="content">
         <div id="account-info" class="section">
             <h2>TÀI KHOẢN CỦA TÔI</h2>
             <form>
-                <div>
-                    <label for="name">Họ và Tên</label>
+                <div class = "form_user">
+                    
+                    <label for="name"><i class="fa fa-user"></i> Họ và Tên</label>
                     <input type="text" id="name" value="" disabled>
                 </div>
                 <div>
-                    <label for="email1">Email</label>
+                    <label for="email1"><i class="fa fa-envelope"></i> Email</label>
                     <input type="email" id="email1" value="" disabled>
                 </div>
                 <div>
-                    <label for="address">Địa chỉ</label>
+                    <label for="address"><i class="fa fa-address-book"></i> Địa chỉ</label>
                     <input type="text" id="address" value="" disabled>
                 </div>
                 <div>
-                    <label for="role">Chức vụ</label>
+                    <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
                     <input type="text" id="role" value="" disabled>
                 </div>
                 <div>
-                    <label>Giới tính</label>
+                    <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
                     <select name="gender" id="genderSelect" disabled>
                         <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
@@ -59,9 +53,9 @@
                     </select>
                 </div>
                 <div class="button-group">
-                    <button type="button" id="unlock_user">Chỉnh Sửa</button>
-                    <button type="button" id="Update_user" onclick="updateUser()" style="display: none">Cập Nhật</button>
-                    <button type="button" onclick="openChangePasswordForm()">Đổi Mật Khẩu</button>
+                    <button type="button" id="unlock_user">CHỈNH SỬA</button>
+                    <button type="button" id="Update_user" onclick="updateUser()" style="display: none">CẬP NHẬT</button>
+                    <!-- <button type="button" onclick="openChangePasswordForm()">Đổi Mật Khẩu</button> -->
                 </div>
             </form>
         </div>
@@ -69,7 +63,7 @@
 </div>
 
 <!-- Form đổi mật khẩu -->
-<div id="change-password-form" class="overlay">
+<!-- <div id="change-password-form" class="overlay">
     <div class="form-container">
         <span class="close-btn" onclick="closeChangePasswordForm()">&times;</span>
         <h2>Đổi Mật Khẩu</h2>
@@ -92,9 +86,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 
 </body>
 </html>
-
-

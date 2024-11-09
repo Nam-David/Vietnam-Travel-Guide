@@ -1,7 +1,15 @@
+body{
+    bottom: 0;
+    position: sticky;
+}
 footer {
     display: block;
     background: hsl(223, 80%, 52%);
     padding-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    left: 0;
 }
 
 .footer_name {

@@ -3,72 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hóa Đơn</title>
-    <link rel="stylesheet" href="/static/css/Admin/bill.css">
-    <link rel="stylesheet" href="/static/css/navbar.css">
+    <title>Quản lý blog</title>
+    <link rel="stylesheet" href="../../../public/css/Admin/blog_management.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/css/sidebar.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-<!--JS-->
-<script src="/static/js/sidebar.js"></script>
-<script src="/static/js/navbar.js"></script>
-<script src="/static/js/tokenAdmin.js"></script>
+    <script src="../../../public/js/Admin/admin.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
 
-
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="/static/js/Admin/bill.js"></script>
-
-<div class="body1">
-    <div class="contain">
-        <div class="header">
-            <h1>Thông Tin Hóa Đơn</h1>
-        </div>
-
-        <div class="main-content">
-            <div class="order-info">
-                <h3>Thông Tin Khách Hàng</h3>
-                <p><strong>Tên: </strong><span id="customerName"></span></p>
-                <p><strong>Số Điện Thoại: </strong><span id="customerPhone"></span></p>
-                <p><strong>Mã Hóa Đơn: </strong><span id="InvoiceID"></span></p>
-                <p><strong>Ngày Đặt Hàng: </strong><span id="InvoiceDate"></span></p>
-                <p><strong>Trạng Thái Đơn Hàng: </strong><span id="orderStatus"></span></p>
+    <main class="main-content">
+        <section class="orders">
+            <div class="search-bar" style="width: 400px; margin-left:995px; align-items: center;">
+                <input type="text" style="border-radius: 20px 20px;" placeholder="Tra cứu đơn hàng...">
             </div>
-
-            <div class="product-info">
-                <h3>Thông Tin Sản Phẩm</h3>
-                <table id="product-table">
+    
+            <div class="table-wrapper">
+                <table id="requests-table">
                     <thead>
                     <tr>
-                        <th>Tên Sản Phẩm</th>
-                        <th>Giá</th>
-                        <th>Số Lượng</th>
-                        <th>Thành Tiền</th>
+                        <th class="center-heading">STT</th>
+                        <th class="center-heading">Mã đơn hàng</th>
+                        <th class="center-heading">Khách hàng</th>
+                        <th class="center-heading">Ngày đặt hàng</th>
+                        <th class="center-heading">Trạng Thái</th>
                     </tr>
                     </thead>
-                    <tbody id="product-table-body">
-                    <!-- Dữ liệu sản phẩm sẽ được thêm vào đây -->
+                    <tbody id="invoice-list">
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="3" style="text-align: right;"><strong>Tổng cộng</strong></td>
-                        <td id="totalAmount">0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align: right;"><strong>Voucher Giảm Giá<p><strong>Mã Giảm Giá Đã Áp Dụng: </strong><span id="voucherName"></span></p></strong></td>
-                        <td id="discountAmount">0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" style="text-align: right;"><strong>Tổng Thanh Toán</strong></td>
-                        <td id="totalPaymentAmount">0</td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
-        </div>
-    </div>
-    <button id="confirmButton" style="padding: 10px 20px;border-radius : 10px; margin: 30px 3%;">Back</button>
-</div>
-
-</body>
-</html>
-
+        </section>
+    </main>    
+    </body>
+    </html>
+    

@@ -1,69 +1,97 @@
-
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7fb;
+    background-color: rgb(246, 249, 255);
 }
 
-
-.body1 {
-    font-family: Arial, sans-serif;
-    margin-left: 280px;
-    margin-top: 2%;
+/* table */
+.table-wrapper {
+    padding: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #e4e7ef;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 1110px;
+    margin-left:320px;
+    align-items: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-.contain {
-    width: 90%;
-    margin: auto;
-    overflow: hidden;
-    border-radius:2% 2%;
-    border: #000000 solid 0.5px;
+th, td {
+    padding: 23px;
+    text-align: left;
 }
 
-.header{
-    background: #fff;
-    color: #333;
-    padding-top: 3px;
-    min-height: 70px;
-    border-bottom: #26324d 3px solid;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.header h1 {
-    text-align: center;
-    text-transform: uppercase;
-    padding-top: 5px;
-    font-size: 24px;
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+th {
+    background-color: #f9f9f9;
+    color: black;
+}
+/*  */
+
+/* Status colors */
+.status-chua-xac-nhan,
+.status-da-xac-nhan,
+.status-dang-giao,
+.status-da-giao {
+    border-radius: 8px; /* Bo góc tròn với bán kính 8px */
+    padding: 5px 10px;   /* Thêm khoảng cách bên trong */
+    text-align: center;  /* Canh giữa nội dung */
+    border-color: white;
+}
+
+/* Pastel colors */
+.status-chua-xac-nhan {
+    background-color: #f3de89; /* Màu vàng pastel */
+    color: #333;              /* Màu chữ đen nhạt */
+}
+
+.status-da-xac-nhan {
+    background-color: #7abc96; /* Màu xanh lá cây pastel */
+    color: #fff;              /* Màu chữ trắng */
+}
+
+.status-dang-giao {
+    background-color: #6ab1ca; /* Màu xanh dương pastel */
+    color: #fff;              /* Màu chữ trắng */
+}
+
+.status-da-giao {
+    background-color: #87a9df; /* Màu xanh dương pastel nhạt */
+    color: #fff;              /* Màu chữ trắng */
 }
 
 .main-content {
-    padding: 20px;
-    background: #f4f4f4;
+    flex-grow: 1;
+    padding: 30px;
 }
 
-.main-content h2 {
-    text-align: center;
+.orders h2 {
+    margin-bottom: 20px;
 }
 
-.order-info, .product-info {
-    background: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #ddd;
+.search-bar {
+    margin-bottom: 20px;
 }
 
-.order-info h3, .product-info h3 {
-    margin: 0 0 10px;
-}
-
-.order-info p, .product-info p {
-    margin: 5px 0;
+.search-bar input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #f1eeee;
+    border-radius: 4px;
+    margin-left: 40px;
 }
 
 table {
@@ -71,23 +99,11 @@ table {
     border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
+table th, table td {
+    padding: 25px;
     text-align: left;
 }
 
-th {
-    background: #f4f4f4;
+table th {
+    background-color:white;
 }
-
-.status {
-    color: white;
-    background-color: #007bff;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
