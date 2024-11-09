@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Write New Review</title>
-    <link rel="stylesheet" href="/BE_LT_WEB/Vietnam-Travel-Guide/public/css/WriteReview.css">
+    <link rel="stylesheet" href="../../../public/css/WriteReview.css">
 </head>
 <body>
     <?php   
@@ -20,7 +20,7 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Vuon Tam The Gioi">
+            <img src="../../../public/image/logo.png" alt="Vuon Tam The Gioi">
         </div>
         <nav>
             <ul>
