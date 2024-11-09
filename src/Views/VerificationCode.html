@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verification Page</title>
     <link rel="stylesheet" href="../../../public/css/VerificationCode.css">
+    <script src="/public/js/Verification.js"> </script>
 </head>
 <body>
     <div class="verification-container">
         <div class="left-section">
-            <img src="../../../public/image/Travel.jnp" alt="không hiển thị" id="left-img">
+            <img src="/public/image/test1.jpg" alt="không hiển thị" id="left-img">
             
         </div>
         <div class="right-section">
@@ -26,35 +27,6 @@
             <button class="resend-button">Resend Code</button>
         </div>
     </div>
-    <script>
-        const codeBoxes = document.querySelectorAll('.code-box');
-
-        codeBoxes.forEach((box, index) => {
-            box.addEventListener('input', () => {
-                // Chuyển đến ô tiếp theo chỉ nếu ô hiện tại không rỗng
-                if (box.value.length >= 1) {
-                    if (index < codeBoxes.length - 1) {
-                        codeBoxes[index + 1].focus();
-                    }
-                }
-            });
-            
-
-            box.addEventListener('keydown', (event) => {
-                // Chuyển về ô trước nếu phím Backspace được nhấn và ô hiện tại rỗng
-                if (event.key === 'Backspace' && box.value.length === 0 && index > 0) {
-                    codeBoxes[index - 1].focus();
-                }
-            });
-        });
-
-        // Verify when Enter is pressed
-        document.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            verifyButton.click();
-        }
-  
-        });
-    </script>
+    
 </body>
 </html>

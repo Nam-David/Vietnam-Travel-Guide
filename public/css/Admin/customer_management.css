@@ -22,7 +22,7 @@ body {
 }
 
 .add-user-btn {
-    background-color: #304067;
+    background-color: #35679C;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -36,15 +36,33 @@ body {
 
 .add-user-btn i {
     margin-left: 10px;
+
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; 
+    margin-left: 880px; 
+    margin-bottom: 20px;
 }
 
 .search-bar {
-    padding: 15px;
-    width: calc(50% - 280px);
-    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 40px; 
+    border: 1px solid #ccc;
     border-radius: 20px;
-    border: 1px solid #ddd;
-    margin-left: 820px
+    font-size: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2rem;
+    pointer-events: none; 
 }
 
 .table-wrapper {
