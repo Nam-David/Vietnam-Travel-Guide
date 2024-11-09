@@ -21,59 +21,85 @@ class bloggerController{
     }
 
     public function saveBlog($provinceID, $userID, $blogContent, $blogCreateDate){
-        $sql = "INSERT INTO blogs(provinceID, userID, blogContent, blogCreateDate) 
+        $sql = "INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate) 
                 VALUES ($provinceID, '$userID', '$blogContent', '$blogCreateDate')";
-        $insert_query = mysqli_query($this->conn->connect(),$sql);
-        return $insert_query['blogID'];
+        
+        $insert_query = mysqli_query($this->conn->connect(), $sql);
+        
+        if ($insert_query) {
+            // Kiểm tra ID của bản ghi mới chèn vào
+            $blogID = $this->conn->getInsertId();
+            if ($blogID > 0) {
+                return $blogID;
+            } else {
+                echo "Không thể lấy ID của blog mới!";
+                return null;
+            }
+        } else {
+            echo "Lỗi khi chèn blog: " . mysqli_error($this->conn->connect());
+            return null;
+        }
     }
+    
+    
 
     private function saveBlogImage($blogId, $imgBlogURL) {
-        $sql = "INSERT INTO blog_images (blogID, imgBlogURL) VALUES ($blogId, '$imgBlogURL')";
-        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        if ($blogId !== null) {
+            $sql = "INSERT INTO imgblog (blogID, imgBlogURL) VALUES ($blogId, '$imgBlogURL')";
+            $insert_query = mysqli_query($this->conn->connect(), $sql);
+            
+            if (!$insert_query) {
+                // In thông báo lỗi nếu có
+                echo "Lỗi khi lưu ảnh: " . mysqli_error($this->conn->connect());
+            }
+        } else {
+            echo "Blog ID không hợp lệ!";
+        }
     }
+    
 
     //các hàm của blogger
     public function addblog(){
-
-        $provinceID = $_POST['provinceID'];
+        $provinceID = $_POST['location'];
+        $blogContent = $_POST['review'];
         $userID = $_SESSION['blogger_id'];
-        $blogContent = $_POST['blogContent'];
         $blogCreateDate = date('Y-m-d H:i:s');
 
+        // Gọi hàm saveBlog để lưu bài viết
         $blogid = $this->saveBlog($provinceID, $userID, $blogContent, $blogCreateDate);
-        echo "Blog thêm thành công";
 
-        // Xử lý hình ảnh
-        $files = $_FILES['blogImages'];
+        if ($blogid !== null) {
+            echo "Blog đã được tạo với ID: $blogid <br>";
 
-        // Lặp qua từng tệp hình ảnh
-        for ($i = 0; $i < count($files['name']); $i++) {
-            $fileTmpPath = $files['tmp_name'][$i];
-
-            // Tải lên hình ảnh và nhận URL
-            $imageUrl = $this->uploadImage($fileTmpPath);
-
-            if ($imageUrl !== false) {
-                $this->saveBlogImage($blogid, $imageUrl);
-            } else {
-                echo "Lỗi khi tải lên hình ảnh: " . $files['name'][$i];
+            // Tiến hành upload ảnh
+            foreach ($_FILES['photos']['tmp_name'] as $index => $tmpName) {
+                if (!empty($tmpName)) {
+                    $imageUrl = $this->uploadImage($tmpName);
+                    echo "Ảnh đã upload: $imageUrl <br>";
+                    $this->saveBlogImage($blogid, $imageUrl);
+                } else {
+                    echo "Ảnh không hợp lệ hoặc không có ảnh được chọn. <br>";
+                }
             }
         }
     }
+    
 
     public function deleteBlog($blogid){
-
         $userID = $_SESSION['blogger_id'];
-        $sql = "DELETE FROM blogID = $blogid and userID = $userID";
-
-        $delete_query = mysqli_query($this->conn->connect(),$sql);
-
+        
+        // Cập nhật lại câu lệnh SQL
+        $sql = "DELETE FROM blog WHERE blogID = $blogid AND userID = $userID";
+        
+        $delete_query = mysqli_query($this->conn->connect(), $sql);
+        
         if ($this->conn->getAffectedRows() > 0) {
-            echo "blog đã được xóa thành công!";
+            echo "Blog đã được xóa thành công!";
         } else {
             echo "Không tìm thấy blog để xóa!";
         }
     }
+    
 
     public function updateBlog($blogId) {
         $provinceID = $_POST['provinceID'];
