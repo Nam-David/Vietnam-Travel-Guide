@@ -101,8 +101,8 @@ class AuthController{
             return;
         }
 
-        $hashedPassword = md5($password);
-
+        //$hashedPassword = md5($password);
+        $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
 
         $sql = "INSERT INTO users (userName, email, pass_word, role_) 
         VALUES ('$username','$email','$hashedPassword','Blogger')";
@@ -137,8 +137,7 @@ class AuthController{
         }
 
         $user = mysqli_fetch_array($get_query);
-        
-        if (md5($password) === $user['pass_word']) {
+        if(password_verify($password, $user['pass_word'])) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             

@@ -2,9 +2,9 @@
 
 class CloudinaryUploader
 {
-    private $cloudName = 'your_cloud_name';
-    private $apiKey = 'your_api_key';
-    private $apiSecret = 'your_api_secret';
+    private $cloudName = 'dcjkgvmfk';
+    private $apiKey = '793696868632679';
+    private $apiSecret = 'Z-XS_T1eiwADeV8iMq-udx2mhuU';
 
     /**
      * Upload file to Cloudinary
@@ -14,11 +14,13 @@ class CloudinaryUploader
      */
     public function upload($fileTmpPath)
     {
-        $url = "https://api.cloudinary.com/v1_1/{$this->cloudName}/image/upload";
+        if (empty($fileTmpPath) || !file_exists($fileTmpPath)) {
+            return false; // Return false if the file path is invalid
+        }
 
-        
+        $url = "https://api.cloudinary.com/v1_1/{$this->cloudName}/image/upload";
         $timestamp = time();
-        $signature = sha1(string: "timestamp={$timestamp}{$this->apiSecret}");
+        $signature = sha1("timestamp={$timestamp}{$this->apiSecret}");
 
         // File data for upload
         $fileData = curl_file_create($fileTmpPath, mime_content_type($fileTmpPath), basename($fileTmpPath));
@@ -49,8 +51,9 @@ class CloudinaryUploader
                 return $responseData['secure_url'];
             }
         }
-        
+
         // Return false if upload failed
         return false;
     }
 }
+?>
