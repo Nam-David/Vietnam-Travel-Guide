@@ -86,8 +86,8 @@ class AuthController{
             return;
         }
 
-        if (strlen($username) < 5) {
-            echo "Tên người dùng phải có ít nhất 5 ký tự!";
+        if (strlen($username) < 2) {
+            echo "Tên người dùng phải có ít nhất 2 ký tự!";
             return;
         }
 
@@ -101,8 +101,13 @@ class AuthController{
             return;
         }
 
-        $hashedPassword = md5($password);
+        if($this->checkIssetEmail($email)){
+            echo "Email đã tồn tại!";
+            return;
+        }
 
+        //$hashedPassword = md5($password);
+        $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
 
         $sql = "INSERT INTO users (userName, email, pass_word, role_) 
         VALUES ('$username','$email','$hashedPassword','Blogger')";
@@ -139,7 +144,9 @@ class AuthController{
 
         $user = mysqli_fetch_array($get_query);
         
-        if (md5($password) === $user['pass_word']) {
+        //if (md5($password) === $user['pass_word']) {
+        //hash - PASSWORD_ARGON2 
+        if(password_verify($password, $user['pass_word'])) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             
