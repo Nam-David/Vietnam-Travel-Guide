@@ -223,3 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchDiamond();
 });
+function toggleDestinations(provinceId) {
+    const row = document.getElementById(`destinations-${provinceId}`);
+    row.style.display = row.style.display === "none" ? "table-row" : "none";
+}
