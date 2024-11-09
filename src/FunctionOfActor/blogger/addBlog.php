@@ -1,10 +1,9 @@
 <?php
-include_once "../../Controller/bloggerController.php";
-include_once "../../Controller/authController.php";
+include_once "../../Controllers/bloggerController.php";
+include_once "../../Controllers/authController.php";
 
-$auth = new AuthController();
-$auth->checkBlogger();
-
-$controller = new bloggerController();
-$controller->addblog();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller = new bloggerController();
+        $controller->addblog();
+    }
 ?>
