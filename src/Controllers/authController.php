@@ -101,15 +101,15 @@ class AuthController{
             return;
         }
 
-        //$hashedPassword = md5($password);
-        $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
+        $hashedPassword = md5($password);
+
 
         $sql = "INSERT INTO users (userName, email, pass_word, role_) 
         VALUES ('$username','$email','$hashedPassword','Blogger')";
         $insert_query = mysqli_query($this->conn->connect(),$sql);
 
         if($insert_query){
-            header("location: /BE_LT_WEB/Vietnam-Travel-Guide/src/Views/home.html");
+            header("location: /Vietnam-Travel-Guide/src/Views/home.html");
         }
     }
 
@@ -117,6 +117,7 @@ class AuthController{
     {
         $email = $_POST['email'] ?? null;
         $password = $_POST['password'] ?? null;
+
 
         if (!$email || !$password) {
             echo "Vui lòng điền đầy đủ thông tin!";
@@ -137,15 +138,16 @@ class AuthController{
         }
 
         $user = mysqli_fetch_array($get_query);
-        if(password_verify($password, $user['pass_word'])) {
+        
+        if (md5($password) === $user['pass_word']) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             
             if($user['role_'] == "Admin"){
-                header("location: /BE_LT_WEB/Vietnam-Travel-Guide/src/Views/admin.html");
+                header("location: /Vietnam-Travel-Guide/src/Views/admin.html");
             }
             else{
-                header("location: /BE_LT_WEB/Vietnam-Travel-Guide/src/Views/home.html");
+                header("location: /Vietnam-Travel-Guide/src/Views/home.html");
             }
             exit;
         } else {

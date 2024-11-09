@@ -7,4 +7,5 @@ $auth->checkBlogger();
 
 $controller = new bloggerController();
 $controller->addRepComment($commentID)
+
 ?>
