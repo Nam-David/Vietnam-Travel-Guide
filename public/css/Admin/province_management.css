@@ -15,7 +15,7 @@ body {
 /* Kiểu dáng của ô tìm kiếm và nút thêm mới */
 .province-management {
     background-color: white;
-    width: 94%;
+    width: 93%;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -25,7 +25,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 300px;
-    margin-left: 71.5%;
+    margin-left: 67.5%;
     margin-bottom: 20px;
 }
 
