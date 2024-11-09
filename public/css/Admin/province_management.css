@@ -1,9 +1,10 @@
 /* Đặt kiểu dáng cho toàn bộ trang */
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(246, 249, 255);
+    background-color: #fafafb;
+    
 }
 
 .main-content {
@@ -11,6 +12,20 @@ body {
     padding: 20px;
     width: calc(100% - 280px);
 }
+
+.add-destination-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #35679C;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
 
 /* Kiểu dáng của ô tìm kiếm và nút thêm mới */
 .province-management {
@@ -215,30 +230,141 @@ td:last-child {
     align-items: center;
     z-index: 1000;
 }
+.popup1-close {
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    right: -20px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #35679C;
+}
 
 .popup1-content {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 80%;
+    padding: 0;
+    border-radius: 10px;
+    width: 100%;
     max-width: 600px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+.wrapper {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    padding: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FEFCFB;
+    background-color: #FEFCFB;
+    box-shadow: none;
+    margin-bottom: 0;
+}
 
-.popup1-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
+#user-form{
+    height: 55vh;
+}
+#user-form{
+    height: 55vh;
+}
+.field {
+    flex: 1;
+    margin: 10px;
+    position: relative;
+}
+.field label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #35679C;
+    font-size: 17px;
+    color: #35679C;
+    font-size: 17px;
+}
+
+.field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.field.input select {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 14px;
     color: #333;
+}
+
+.field input:focus {
+    border-color: #000;
+    outline: none;
+}
+textarea{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Buttons */
+.button {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    margin: 30px 10px;
+}
+
+.button input {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button input.save  {
+    background-color: #35679C;
+    background-color: #35679C;
+    color: #fff;
+}
+
+.button input.cancel  {
+    background-color: #c2c2c2;
+    background-color: #c2c2c2;
+    color: #fff;
+}
+
+.button input.save:hover,
+.button input.cancel:hover {
+    background-color: #797d97;
+}
+
+/* Popup Buttons */
+#yes-btn {
+    background-color: #0d4160;
+    color: #fff;
+}
+
+#no-btn {
+    background-color: #ddd;
 }
 /* CSS cho bảng con */
 .destination-table-wrapper {
     padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    
     border-radius: 5px;
 }
 
