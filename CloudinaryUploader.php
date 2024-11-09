@@ -1,10 +1,26 @@
-<?php
 
+<?php
+require_once 'path/to/cloudinary_php/src/Cloudinary.php';
+require_once 'path/to/cloudinary_php/src/Api.php';
+require_once 'path/to/cloudinary_php/src/Uploader.php';
+require_once 'path/to/cloudinary_php/src/Api/ApiResponse.php';
+
+
+
+
+
+?>
+
+
+
+
+
+<!-- 
 class CloudinaryUploader
 {
-    private $cloudName = 'your_cloud_name';
-    private $apiKey = 'your_api_key';
-    private $apiSecret = 'your_api_secret';
+    private $cloudName = 'dt5xizv10';
+    private $apiKey = '113462295938149';
+    private $apiSecret = 'QiX64lhj43Ll-6Uo6DLZRpHEC70';
 
     /**
      * Upload file to Cloudinary
@@ -15,15 +31,15 @@ class CloudinaryUploader
     public function upload($fileTmpPath)
     {
         $url = "https://api.cloudinary.com/v1_1/{$this->cloudName}/image/upload";
-
         
         $timestamp = time();
-        $signature = sha1(string: "timestamp={$timestamp}{$this->apiSecret}");
+        $signatureString = "timestamp={$timestamp}{$this->apiSecret}";
+        $signature = sha1($signatureString);
 
-        // File data for upload
+        // Prepare file for upload
         $fileData = curl_file_create($fileTmpPath, mime_content_type($fileTmpPath), basename($fileTmpPath));
 
-        // Data to send to Cloudinary
+        // Data for the request
         $data = [
             'file' => $fileData,
             'api_key' => $this->apiKey,
@@ -41,16 +57,26 @@ class CloudinaryUploader
         $response = curl_exec($ch);
         curl_close($ch);
 
-        // Process the response
+        // Handle the response
         if ($response) {
             $responseData = json_decode($response, true);
             if (isset($responseData['secure_url'])) {
-                // Return URL if upload successful
                 return $responseData['secure_url'];
             }
         }
         
-        // Return false if upload failed
         return false;
     }
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
+    $fileTmpPath = $_FILES['image']['tmp_name'];
+
+    $uploader = new CloudinaryUploader();
+    $uploadedUrl = $uploader->upload($fileTmpPath);
+
+    if ($uploadedUrl) {
+        echo "Upload successful! Image URL: <a href='$uploadedUrl'>$uploadedUrl</a>";
+    } else {
+        echo "Upload failed.";
+    }
+} -->
