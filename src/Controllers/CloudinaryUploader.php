@@ -2,9 +2,9 @@
 
 class CloudinaryUploader
 {
-    private $cloudName = 'dcjkgvmfk';
-    private $apiKey = '793696868632679';
-    private $apiSecret = 'Z-XS_T1eiwADeV8iMq-udx2mhuU';
+    private $cloudName = 'dt5xizv10';
+    private $apiKey = '113462295938149';
+    private $apiSecret = 'QiX64lhj43Ll-6Uo6DLZRpHEC70';
 
     /**
      * Upload file to Cloudinary
