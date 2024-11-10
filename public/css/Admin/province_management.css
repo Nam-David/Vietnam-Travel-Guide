@@ -8,9 +8,9 @@ body {
 }
 
 .main-content {
-    margin-left: 280px;
-    padding: 20px;
-    width: calc(100% - 280px);
+    margin-left: 310px;
+    padding-top: 20px;
+    width: calc(100% - 310px);
 }
 
 .add-destination-btn {
@@ -30,7 +30,7 @@ body {
 /* Kiểu dáng của ô tìm kiếm và nút thêm mới */
 .province-management {
     background-color: white;
-    width: 93%;
+    width: 94%;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);

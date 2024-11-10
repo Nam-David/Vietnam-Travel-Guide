@@ -9,7 +9,7 @@ body {
 
 .main-content {
     margin-left: 280px;
-    padding: 24px;
+    padding: 20px;
     background-color: #FAFAFB;
     min-height: 100vh;
     width: calc(100% - 280px);
