@@ -53,7 +53,7 @@
                         <td>Nam</td>
                         <td>Khách hàng</td>
                         <td class="action-btn-frame">
-                            <button class="action-btn edit">
+                            <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
                             </button>
                             <button class="action-btn delete">
@@ -108,7 +108,47 @@
                     </select>
                 </div>
                 <div class="button">
-                    <input type="submit" value="Lưu" class="save" id="saveButton">
+                    <input type="submit" value="Tạo" class="save" id="saveButton">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="popup1-overlay" id="popup2Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="closepopup2">&times;</span>
+        <div class="wrapper" id = "updateUser">
+            <form id="user-form" enctype="multipart/form-data">
+                    <div class="field input">
+                        <label for="userName">Họ và Tên</label>
+                        <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
+                    </div>
+
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="tel" id="email" name="email" placeholder="nguyenvana@gmail.com" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Mật khẩu</label>
+                    <div style="position: relative;">
+                        <input type="password" id="password" name="password" required>
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                            <ion-icon style = "color: #35679C" name="eye-outline"></ion-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="role" >Chức Vụ</label>
+                    <select id="role" name="Role">
+                        <option value="Admin">Admin</option>
+                        <option value="Customer">Blogger</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Cập nhật" class="save" id="saveButton">
                     <input type="button" value="Hủy" class="cancel" id="cancelButton">
                 </div>
             </form>

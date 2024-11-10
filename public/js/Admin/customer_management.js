@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
         popup1Overlay.style.display = 'flex';
     });
 
+    document.getElementById('edit-btn').addEventListener('click', () => {
+        resetFormState();
+        popup2Overlay.style.display = 'flex';
+    });
+
+    document.getElementById('closepopup2').addEventListener('click', () => {
+        if (confirm("Xác nhận hủy?")) {
+            popup2Overlay.style.display = 'none';
+            removeAdminOption();
+        }
+    });
+
     document.getElementById('closepopup1').addEventListener('click', () => {
         if (confirm("Xác nhận hủy?")) {
             popup1Overlay.style.display = 'none';
