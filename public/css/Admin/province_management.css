@@ -319,7 +319,6 @@ textarea {
     background-color: #fff;
     font-size: 14px;
     color: #333;
-    padding: 10px;
     resize: vertical;
     overflow-y: auto;
 }
