@@ -1,109 +1,131 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(246, 249, 255);
-}
-
-/* table */
-.table-wrapper {
-    padding: 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #e4e7ef;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 1110px;
-    margin-left:320px;
-    align-items: center;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    padding: 23px;
-    text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-th {
-    background-color: #f9f9f9;
-    color: black;
-}
-/*  */
-
-/* Status colors */
-.status-chua-xac-nhan,
-.status-da-xac-nhan,
-.status-dang-giao,
-.status-da-giao {
-    border-radius: 8px; /* Bo góc tròn với bán kính 8px */
-    padding: 5px 10px;   /* Thêm khoảng cách bên trong */
-    text-align: center;  /* Canh giữa nội dung */
-    border-color: white;
-}
-
-/* Pastel colors */
-.status-chua-xac-nhan {
-    background-color: #f3de89; /* Màu vàng pastel */
-    color: #333;              /* Màu chữ đen nhạt */
-}
-
-.status-da-xac-nhan {
-    background-color: #7abc96; /* Màu xanh lá cây pastel */
-    color: #fff;              /* Màu chữ trắng */
-}
-
-.status-dang-giao {
-    background-color: #6ab1ca; /* Màu xanh dương pastel */
-    color: #fff;              /* Màu chữ trắng */
-}
-
-.status-da-giao {
-    background-color: #87a9df; /* Màu xanh dương pastel nhạt */
-    color: #fff;              /* Màu chữ trắng */
+    background-color: #f6f9ff;
+    
 }
 
 .main-content {
-    flex-grow: 1;
-    padding: 30px;
+    margin-left: 280px;
+    padding: 20px;
+    background-color: #FAFAFB;
+    min-height: 100vh;
+    width: calc(100% - 280px);
 }
 
-.orders h2 {
+/* Customer Management Card */
+.blog-management {
+    background-color: white;
+    width: 93%;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin-left: 67.5%;
     margin-bottom: 20px;
 }
 
 .search-bar {
-    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
 }
 
-.search-bar input {
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+/* Table */
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
     width: 100%;
-    padding: 15px;
-    border: 1px solid #f1eeee;
-    border-radius: 4px;
-    margin-left: 40px;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
-table th, table td {
-    padding: 25px;
-    text-align: left;
+thead {
+    background-color: #FAFAFB;
 }
 
-table th {
-    background-color:white;
+th, td {
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #EBECF2;
+    color: #8F9BBA;
+}
+
+tbody tr {
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #F8F9FA;
+}
+
+td:first-child, td:nth-child(3), td:nth-child(5) {
+    color: #8F9BBA;
+}
+
+td:last-child {
+    gap: 8px;
+}
+
+
+.action-btn {
+    border: none;
+    background: none;
+}
+
+.action-btn-frame {
+    margin-left: 50px;
+}
+
+select {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Màu cho các trạng thái */
+.status-pending {
+    background-color: #ffe4bf;
+    color: #7b86a1;
+    border: 1px solid #fcd195;
+}
+
+.status-approved {
+    background-color: #e0fde0;
+    color: #7b86a1;
+    border: 1px solid #65a165;
+}
+
+.status-rejected {
+    background-color: #f8c9c7;
+    color: #7b86a1;
+    border: 1px solid #ee8480;
 }

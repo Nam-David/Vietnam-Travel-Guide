@@ -309,14 +309,21 @@ td:last-child {
     border-color: #000;
     outline: none;
 }
-textarea{
-    width: 100%;
+
+
+textarea {
+    width: 100% !important;
+    height: 150px !important;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
     font-size: 14px;
     color: #333;
+    padding: 10px;
+    resize: vertical;
+    overflow-y: auto;
 }
+
 
 /* Buttons */
 .button {

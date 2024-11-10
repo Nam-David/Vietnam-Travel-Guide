@@ -19,27 +19,82 @@
 
 
 <div class="main-content">
-    <div class="blog-management">
-        <button class="add-blog-btn" id="openpopup1">
-            Thêm Bài Viết Mới <i class="fas fa-plus"></i>
+    <div class="post-management">
+        <button class="add-post-btn" id="openpopup1">
+            Thêm Địa Điểm <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
         </button>
 
-        <input type="text" placeholder="Nhập tiêu đề bài viết để tìm kiếm..." class="search-bar">
+        <div class="search-container">
+            <input type="text" placeholder="Tìm kiếm bài viết" class="search-bar">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        </div>
 
         <div class="table-wrapper" >
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
-                <tr>
-                    <th >STT</th>
-                    <th >Tiêu đề</th>
-                    <th >Nội dung</th>
-                    <th style=" text-align: center;">Lựa Chọn</th>
-                </tr>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tỉnh thành</th>
+                        <th>Điểm đến</th>
+                        <th>Di chuyển</th>
+                        <th>Ẩm thực</th>
+                        <th>Lễ hội</th>
+                        <th>Lựa Chọn</th>
+                    </tr>
                 </thead>
-                <tbody id="blog-table-body">
-                <!-- Dữ liệu khách hàng sẽ được thêm bằng JavaScript -->
+                <tbody id="post-table-body">
+                    <!-- Dữ liệu mẫu -->
+                    <tr>
+                        <td>1</td>
+                        <td>Hà Nội</td>
+                        <td>Văn Miếu Quốc Tử Giám</td>
+                        <td>Xe máy, taxi, xe buýt</td>
+                        <td>Phở, bún chả, bánh cuốn</td>
+                        <td>Lễ hội pháo hoa</td>
+                        <td class="action-btn-frame">
+                            <button class="action-btn edit">
+                                <ion-icon name="create"></ion-icon>
+                            </button>
+                            <button class="action-btn delete">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Đà Nẵng</td>
+                        <td>Cầu Rồng</td>
+                        <td>Xe buýt, xe máy</td>
+                        <td>Mì Quảng, bánh tráng cuốn</td>
+                        <td>Lễ hội Cầu Rồng</td>
+                        <td class="action-btn-frame">
+                            <button class="action-btn edit">
+                                <ion-icon name="create"></ion-icon>
+                            </button>
+                            <button class="action-btn delete">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Chợ Bến Thành</td>
+                        <td>Taxi, xe máy</td>
+                        <td>Bánh mì, hủ tiếu, cơm tấm</td>
+                        <td>Lễ hội đường hoa Nguyễn Huệ</td>
+                        <td class="action-btn-frame">
+                            <button class="action-btn edit">
+                                <ion-icon name="create"></ion-icon>
+                            </button>
+                            <button class="action-btn delete">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+            
 
             <div id="popup" class="popup-overlay">
                 <div class="popup-content">
@@ -56,23 +111,49 @@
     <div class="popup1-content">
         <span class="popup1-close" id="closepopup1">&times;</span>
         <div class="wrapper" id = "addUser">
-            <form id="blog-form" enctype="multipart/form-data">
-                <div class="top-fields">
-                    <div class="field input">
-                        <label for="Title">Tiêu Đề</label>
-                        <input type="text" id="Title" name="Title" placeholder="Vui lòng nhập tiêu đề" required>
+            <form id="post-form" enctype="multipart/form-data">
+                <div class="field input">
+                    <div>
+                        <label for="province">Tỉnh/Thành Phố</label>
+                        <select id="province" name="province">
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="image">Tải ảnh:</label>
+                        <input type="file" id="image" name="image">
                     </div>
                 </div>
 
-                <div class="field input">
-                    <label for="image">Tải Ảnh</label>
-                    <input type="file" id="image" accept="image/*">
+                <div class="field-row">
+                    <div class="field">
+                        <label for="transport">Di chuyển</label>
+                        <textarea wrap="soft" id="transport" name="transport" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-transport" name="image-transport">
+                    </div>
                 </div>
-
-                <div class="field input">
-                    <label for="content">Nội Dung</label>
-                    <textarea id="content" name="content" placeholder="Nhập nội dung" required
-                        style="text-align: start; width: 100%; height: 200px; padding: 10px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
+            
+                <div class="field-row">
+                    <div class="field">
+                        <label for="food">Ẩm thực</label>
+                        <textarea wrap="soft" id="food" name="food" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-food" name="image-food">
+                    </div>
+                </div>
+            
+                <div class="field-row">
+                    <div class="field">
+                        <label for="festival">Lễ hội</label>
+                        <textarea wrap="soft" id="festival" name="festival" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-festival" name="image-festival">
+                    </div>
                 </div>
 
                 <div class="button">
@@ -83,11 +164,6 @@
         </div>
     </div>
 </div>
-
-<script src="/static/js/url.js"></script>
-<script src="/static/js/Admin/blog_management.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>

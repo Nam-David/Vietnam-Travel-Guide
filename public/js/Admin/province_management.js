@@ -1,8 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const destinationForm = document.getElementById("destination-form");
     const popup1Overlay = document.getElementById('popup1Overlay');
+    const searchInput = document.querySelector('.search-bar');
     let isEditing = false;
     let editingDiamondId = null;
+
+    searchInput.addEventListener('input', () => {
+        const searchText = searchInput.value.trim().toLowerCase();
+        const rows = document.querySelectorAll('#province-List tr');
+
+        rows.forEach(row => {
+            const postTitle = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+            row.style.display = postTitle.includes(searchText) ? 'table-row' : 'none';
+        });
+    });
 
     document.getElementById('open').addEventListener('click', () => {
         destinationForm.reset();

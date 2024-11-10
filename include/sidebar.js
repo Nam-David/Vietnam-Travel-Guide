@@ -23,6 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 </li>
             </ul>
         </div>
+
+        <!-- Nút Toggle Sidebar -->
+        <div class="toggle-sidebar" onclick="toggleSidebar()">☰</div>
     `;
     document.body.insertAdjacentHTML('afterbegin', sidebar);
+
+    if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').style.width = '0';
+    }
 });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+
+    if (sidebar.style.transform === 'translateX(0px)') {
+        sidebar.style.transform = 'translateX(-100%)'; 
+    } else {
+        sidebar.style.transform = 'translateX(0)';
+    }
+}
